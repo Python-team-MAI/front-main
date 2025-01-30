@@ -32,6 +32,7 @@
         "@nextui-org/theme": "^2.4.5",
         "@reduxjs/toolkit": "^2.5.0",
         "framer-motion": "^11.16.1",
+        "moment": "^2.30.1",
         "next": "15.1.4",
         "next-auth": "^5.0.0-beta.25",
         "next-intl": "^3.26.3",

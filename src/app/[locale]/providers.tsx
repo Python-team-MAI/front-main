@@ -13,14 +13,11 @@ export function Providers({
     messages: AbstractIntlMessages
     locale: Locale
 }) {
-    console.log(locale)
     return (
-        <NextIntlClientProvider locale={locale} messages={messages}>
-            <NextUIProvider>
-                <ThemeProvider attribute="class" defaultTheme="dark">
-                    {children}
-                </ThemeProvider>
-            </NextUIProvider>
+        <NextIntlClientProvider timeZone="Europe/Moscow" locale={locale} messages={messages}>
+            <ThemeProvider attribute="class">
+                <NextUIProvider>{children}</NextUIProvider>
+            </ThemeProvider>
         </NextIntlClientProvider>
     )
 }

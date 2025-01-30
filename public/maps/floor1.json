@@ -1,0 +1,44 @@
+{
+    "floor": 1,
+    "map": "floor1.png",
+    "nodes": [
+        {
+            "id": "entrance",
+            "type": "entrance",
+            "x": 100,
+            "y": 500,
+            "name": "Главный вход",
+            "landmarks": ["Информационный стенд"],
+            "connections": ["corridor1"]
+        },
+        {
+            "id": "corridor1",
+            "type": "corridor",
+            "x": 200,
+            "y": 500,
+            "connections": ["entrance", "elevator1", "stairs1", "cafe"]
+        },
+        {
+            "id": "cafe",
+            "type": "room",
+            "x": 300,
+            "y": 500,
+            "name": "Кафе",
+            "landmarks": ["Кофейный автомат"]
+        },
+        {
+            "id": "elevator1",
+            "type": "elevator",
+            "x": 200,
+            "y": 400,
+            "name": "Центральный лифт"
+        },
+        {
+            "id": "stairs1",
+            "type": "stairs",
+            "x": 200,
+            "y": 600,
+            "name": "Парадная лестница"
+        }
+    ]
+}

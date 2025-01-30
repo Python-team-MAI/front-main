@@ -6,5 +6,22 @@
     "email": "Email",
     "password": "Password",
     "registration": "Registration",
-    "register": "Register"
+    "register": "Register",
+    "schedule": "Schedule",
+    "main": "Main",
+    "deadlines": "Deadlines",
+    "payment": "Payments",
+    "lms": "LMS",
+    "account": "Account",
+    "admission": "Admission Office",
+    "teachers": "Teachers",
+    "food": "Food",
+    "sport": "Sport",
+    "news": "News",
+    "campus": "MAI Campus",
+    "main map": "Map of the main building",
+    "recreation": "Recreation centers",
+    "health edu centers": "Health and education centers",
+    "uni campus": "Campus",
+    "dormitories": "Dormitories at the university"
 }

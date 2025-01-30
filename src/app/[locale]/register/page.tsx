@@ -3,14 +3,16 @@ import { signIn, providerMap } from '@/auth'
 import { AuthError } from 'next-auth'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import { useTranslations } from 'next-intl'
 import { Link as NextUILink } from '@nextui-org/link'
+import { getTranslations } from 'next-intl/server'
 
-export default function SignInPage(props: {
-    searchParams: { callbackUrl: string | undefined }
-    params: { locale: Locale }
+export default async function SignInPage(props: {
+    searchParams: Promise<{ callbackUrl: string | undefined }>
+    params: Promise<{ locale: Locale }>
 }) {
-    const t = useTranslations()
+    const { locale } = await props.params
+    const { callbackUrl } = await props.searchParams
+    const t = await getTranslations({ locale })
 
     return (
         <main className="min-h-screen flex flex-col justify-center items-center">
@@ -24,7 +26,7 @@ export default function SignInPage(props: {
                             await signIn('credentials', formData)
                         } catch (error) {
                             if (error instanceof AuthError) {
-                                return redirect({ href: `/?error=${error.type}`, locale: props.params.locale })
+                                return redirect({ href: `/?error=${error.type}`, locale })
                             }
                             throw error
                         }
@@ -44,11 +46,11 @@ export default function SignInPage(props: {
                                 'use server'
                                 try {
                                     await signIn(provider.id, {
-                                        redirectTo: props.searchParams?.callbackUrl ?? '',
+                                        redirectTo: callbackUrl ?? '',
                                     })
                                 } catch (error) {
                                     if (error instanceof AuthError) {
-                                        return redirect({ href: `/?error=${error.type}`, locale: props.params.locale })
+                                        return redirect({ href: `/?error=${error.type}`, locale })
                                     }
 
                                     throw error

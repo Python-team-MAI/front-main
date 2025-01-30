@@ -13,5 +13,9 @@ export const LanguageSwitcher = () => {
         router.push(pathname, { locale: locale === 'en' ? 'ru' : locale === 'ru' ? 'ch' : 'en' })
     }
 
-    return <Button onPress={handleLocaleChange}>{locale.toLocaleUpperCase()}</Button>
+    return (
+        <Button size="sm" onPress={handleLocaleChange}>
+            {locale === 'ru' ? 'РУ' : locale === 'en' ? 'EN' : '中文'}
+        </Button>
+    )
 }

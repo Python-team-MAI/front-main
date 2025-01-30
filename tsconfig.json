@@ -21,9 +21,16 @@
         ],
         "paths": {
             "@/*": ["./src/*"],
-            "@/navigation": ["./src/shared/i18n/routing.ts"]
+            "@/navigation": ["./src/shared/i18n/routing.ts"],
+            "*": ["./*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "public/maps/all_vertical_connectionsjson"
+    ],
     "exclude": ["node_modules"]
 }

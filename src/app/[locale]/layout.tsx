@@ -6,8 +6,9 @@ import { notFound } from 'next/navigation'
 import { Locale, routing } from '@/navigation'
 import { Header } from '@/widgets/Header'
 import './globals.css'
+import { auth } from '@/auth'
 
-const roboto = Roboto({ weight: ['500', '700', '900'] })
+const roboto = Roboto({ subsets: ['cyrillic', 'latin'], weight: ['500', '700', '900'] })
 
 export const metadata: Metadata = {
     title: 'MAI Students',
@@ -16,23 +17,24 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
     children,
-    params: { locale },
+    params,
 }: Readonly<{
     children: React.ReactNode
-    params: { locale: Locale }
+    params: Promise<{ locale: Locale }>
 }>) {
+    const { locale } = await params
     if (!routing.locales.includes(locale)) {
         notFound()
     }
 
     const messages = await getMessages()
-    console.log(messages)
+    const session = await auth()
 
     return (
-        <html lang={locale}>
+        <html lang={locale} suppressHydrationWarning>
             <body className={`${roboto.className} antialiased`}>
                 <Providers locale={locale} messages={messages}>
-                    <Header />
+                    <Header session={session} />
                     {children}
                 </Providers>
             </body>

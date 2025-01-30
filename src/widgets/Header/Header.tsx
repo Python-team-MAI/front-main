@@ -2,27 +2,30 @@
 
 import { Link, usePathname } from '@/navigation'
 import { Button } from '@nextui-org/button'
-import { Image } from '@nextui-org/image'
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/navbar'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
+import { Session } from 'next-auth'
+import { FC } from 'react'
+import { UserAvatar } from './UserAvatar'
+import { Tab, Tabs } from '@nextui-org/tabs'
+import Image from 'next/image'
+import moment from 'moment'
 
-export const Header = () => {
+interface HeaderProps {
+    session: Session | null
+}
+
+export const Header: FC<HeaderProps> = ({ session }) => {
     const pathname = usePathname()
     const t = useTranslations()
-    const { theme } = useTheme()
 
     if (pathname === '/login' || pathname === '/register') {
         return (
             <Navbar shouldHideOnScroll>
                 <NavbarBrand>
-                    <Image
-                        width={70}
-                        src={theme !== 'dark' ? '/logo/light_logo.png' : '/logo/dark_logo.png'}
-                        alt="logo"
-                    />
+                    <Image width={70} height={70} className="max-md:hidden" src={'/logo/light_logo.png'} alt="logo" />
                     <p className="font-bold text-inherit">{t('logo title')}</p>
                 </NavbarBrand>
                 <NavbarContent justify="end">
@@ -38,41 +41,50 @@ export const Header = () => {
     }
 
     return (
-        <Navbar shouldHideOnScroll>
-            <NavbarBrand>
-                <Image width={70} src={theme === 'dark' ? '/logo/dark_logo.png' : '/logo/light_logo.png'} alt="logo" />
-                <p className="font-bold text-inherit">MAI Students</p>
-            </NavbarBrand>
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Features
-                    </Link>
-                </NavbarItem>
-                <NavbarItem isActive>
-                    <Link aria-current="page" href="#">
-                        Customers
-                    </Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Integrations
-                    </Link>
-                </NavbarItem>
-            </NavbarContent>
-            <NavbarContent justify="end">
-                <NavbarItem>
-                    <ThemeSwitcher />
-                </NavbarItem>
-                <NavbarItem>
-                    <LanguageSwitcher />
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
-                        Sign Up
-                    </Button>
-                </NavbarItem>
-            </NavbarContent>
-        </Navbar>
+        <>
+            <Navbar shouldHideOnScroll>
+                <NavbarBrand>
+                    <Image width={70} height={70} className="max-md:hidden" src={'/logo/light_logo.png'} alt="logo" />
+                    <p className="font-bold text-inherit">{t('logo title')}</p>
+                </NavbarBrand>
+                <NavbarContent className="hidden sm:flex gap-4" justify="center">
+                    <NavbarItem>
+                        <Link href="/">{t('main')}</Link>
+                    </NavbarItem>
+                    <NavbarItem>
+                        <Link href={`/schedule?date=${moment().format('DD.MM.YYYY')}&group=М8О-101БВ-24`}>
+                            {t('schedule')}
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem>
+                        <Link href="/deadlines">{t('deadlines')}</Link>
+                    </NavbarItem>
+                </NavbarContent>
+                <NavbarContent justify="end">
+                    <NavbarItem>
+                        <ThemeSwitcher />
+                    </NavbarItem>
+                    <NavbarItem>
+                        <LanguageSwitcher />
+                    </NavbarItem>
+                    <NavbarItem>
+                        {session ? (
+                            <UserAvatar session={session} />
+                        ) : (
+                            <Button size="sm" as={Link} color="primary" href="#" variant="flat">
+                                {t('sign in')}
+                            </Button>
+                        )}
+                    </NavbarItem>
+                </NavbarContent>
+            </Navbar>
+            <nav className="mx-2 sm:hidden">
+                <Tabs fullWidth>
+                    <Tab title={'Главная'}></Tab>
+                    <Tab title="Расписание"></Tab>
+                    <Tab title="Дедлайны"></Tab>
+                </Tabs>
+            </nav>
+        </>
     )
 }
