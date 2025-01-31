@@ -57,6 +57,9 @@ export const Header: FC<HeaderProps> = ({ session }) => {
                         </Link>
                     </NavbarItem>
                     <NavbarItem>
+                        <Link href="/map">{t('map')}</Link>
+                    </NavbarItem>
+                    <NavbarItem>
                         <Link href="/deadlines">{t('deadlines')}</Link>
                     </NavbarItem>
                 </NavbarContent>

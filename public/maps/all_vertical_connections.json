@@ -2,13 +2,7 @@
     {
         "type": "elevator",
         "name": "Центральный лифт",
-        "nodes": ["elevator1", "elevator2"],
+        "nodes": ["elevator_1", "elevator_2"],
         "weight": 2
-    },
-    {
-        "type": "stairs",
-        "name": "Парадная лестница",
-        "nodes": ["stairs1", "stairs2"],
-        "weight": 5
     }
 ]

@@ -5,6 +5,7 @@ export interface INode {
     type: NodeType
     x: number
     y: number
+    z: number
     floor: number
     name?: string
     landmarks?: string[]
