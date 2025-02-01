@@ -14,7 +14,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
     return (
         <main className="p-2">
             <section className="grid max-md:grid-cols-2 grid-cols-4 gap-2">
-                <Card className="flex flex-col items-center ">
+                <Card className="flex flex-col items-center cursor-pointer">
                     <Image
                         className="max-md:w-24"
                         unoptimized
@@ -25,7 +25,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     />
                     <CardFooter className="flex justify-center">{t('payment')}</CardFooter>
                 </Card>
-                <Card className="flex flex-col items-center">
+                <Card className="flex flex-col items-center cursor-pointer">
                     <Image
                         className="max-md:w-24"
                         unoptimized
@@ -36,7 +36,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     />
                     <CardFooter className="flex justify-center">{t('lms')}</CardFooter>
                 </Card>
-                <Card className="flex flex-col items-center">
+                <Card className="flex flex-col items-center cursor-pointer">
                     <Image
                         className="max-md:w-24"
                         unoptimized
@@ -47,7 +47,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     />
                     <CardFooter className="flex justify-center">{t('account')}</CardFooter>
                 </Card>
-                <Card className="flex flex-col items-center">
+                <Card className="flex flex-col items-center cursor-pointer">
                     <Image
                         className="max-md:w-24"
                         unoptimized
@@ -60,8 +60,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                 </Card>
             </section>
             <section className="flex justify-center gap-2 m-4">
-                <div>
-                    <Card className="flex flex-col items-center p-1">
+                <div className="cursor-pointer">
+                    <Card className="flex flex-col items-center p-1 cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -73,8 +73,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     </Card>
                     <p className="text-center m-1 text-sm">{t('teachers')}</p>
                 </div>
-                <div>
-                    <Card className="flex flex-col items-center p-1">
+                <div className="cursor-pointer">
+                    <Card className="flex flex-col items-center p-1 cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -86,8 +86,8 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     </Card>
                     <p className="text-center m-1 text-sm">{t('food')}</p>
                 </div>
-                <div>
-                    <Card className="flex flex-col items-center p-1">
+                <div className="cursor-pointer">
+                    <Card className="flex flex-col items-center p-1 cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -99,7 +99,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     </Card>
                     <p className="text-center m-1 text-sm">{t('sport')}</p>
                 </div>
-                <div>
+                <div className="cursor-pointer">
                     <Card className="flex flex-col items-center p-1">
                         <Image
                             className="max-md:w-16"
@@ -128,7 +128,17 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                             <p className="text-md">{t('main map')}</p>
                             <p className="text-small text-default-500">{t('main map')}</p>
                         </div>
-                        <Button size="lg" variant="shadow" isIconOnly color="primary" className="ml-auto">
+                        <Button
+                            onPress={async () => {
+                                'use server'
+                                redirect({ href: '/map', locale })
+                            }}
+                            size="lg"
+                            variant="shadow"
+                            isIconOnly
+                            color="primary"
+                            className="ml-auto"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width={25}

@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { Text } from '@react-three/drei'
-import { Office } from '../model/types/pathTypes'
+import { Office } from '../../model/types/pathTypes'
 import { getContrastingColor } from '@/shared/lib/colors/getContrastingColor'
 import { lightenHexColor } from '@/shared/lib/colors/lightenHexColor'
 import { Euler } from 'three'

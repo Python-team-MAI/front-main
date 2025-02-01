@@ -1,4 +1,4 @@
-import { IBuildingGraph, INode, IVerticalConnection } from './pathTypes'
+import { IBuildingGraph, INode, IVerticalConnection } from '../types/pathTypes'
 
 type GraphNode = INode & { edges: Map<string, number> }
 type Graph = Map<string, GraphNode>

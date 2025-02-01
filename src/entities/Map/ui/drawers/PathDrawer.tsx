@@ -1,8 +1,8 @@
-import { INode } from '@/shared/lib/path/pathTypes'
 import { Line } from '@react-three/drei'
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
+import { INode } from '../../model/types/pathTypes'
 
 interface Props {
     path: string[]

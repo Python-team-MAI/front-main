@@ -1,17 +1,17 @@
 'use client'
 
-import { Link, usePathname } from '@/navigation'
+import { Link, usePathname, useRouter } from '@/navigation'
 import { Button } from '@nextui-org/button'
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/navbar'
-import { ThemeSwitcher } from './ThemeSwitcher'
-import { LanguageSwitcher } from './LanguageSwitcher'
 import { useTranslations } from 'next-intl'
 import { Session } from 'next-auth'
 import { FC } from 'react'
-import { UserAvatar } from './UserAvatar'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import Image from 'next/image'
 import moment from 'moment'
+import { ThemeSwitcher } from '../ThemeSwitcher'
+import { LanguageSwitcher } from '../LanguageSwitcher'
+import { UserAvatar } from '../UserAvatar'
 
 interface HeaderProps {
     session: Session | null
@@ -20,11 +20,12 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ session }) => {
     const pathname = usePathname()
     const t = useTranslations()
+    const router = useRouter()
 
     if (pathname === '/login' || pathname === '/register') {
         return (
             <Navbar shouldHideOnScroll>
-                <NavbarBrand>
+                <NavbarBrand onClick={() => router.push('/')} className="cursor-pointer">
                     <Image width={70} height={70} className="max-md:hidden" src={'/logo/light_logo.png'} alt="logo" />
                     <p className="font-bold text-inherit">{t('logo title')}</p>
                 </NavbarBrand>
@@ -43,7 +44,7 @@ export const Header: FC<HeaderProps> = ({ session }) => {
     return (
         <>
             <Navbar shouldHideOnScroll>
-                <NavbarBrand>
+                <NavbarBrand onClick={() => router.push('/')} className="cursor-pointer">
                     <Image width={70} height={70} className="max-md:hidden" src={'/logo/light_logo.png'} alt="logo" />
                     <p className="font-bold text-inherit">{t('logo title')}</p>
                 </NavbarBrand>
@@ -55,9 +56,6 @@ export const Header: FC<HeaderProps> = ({ session }) => {
                         <Link href={`/schedule?date=${moment().format('DD.MM.YYYY')}&group=М8О-101БВ-24`}>
                             {t('schedule')}
                         </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link href="/map">{t('map')}</Link>
                     </NavbarItem>
                     <NavbarItem>
                         <Link href="/deadlines">{t('deadlines')}</Link>
