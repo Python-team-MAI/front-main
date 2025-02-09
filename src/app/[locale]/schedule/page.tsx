@@ -4,6 +4,7 @@ import { getWeekRange } from '@/shared/lib/getWeekRange'
 import * as crypto from 'crypto'
 import moment from 'moment'
 import { ScheduleClient } from './Schedule'
+import { WeekDrawer } from '@/features/WeekDrawer'
 
 async function fetchSchedule(groupName: string): Promise<Schedule> {
     const hash = crypto.createHash('md5').update(groupName).digest('hex')
@@ -44,6 +45,10 @@ const SchedulePageServer = async ({
         return <div>Расписание не найдено</div>
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { group, ...scheduleDays } = schedule
+    const times = Object.keys(scheduleDays)
+
     return (
         <div className="p-3">
             <div className="grid grid-cols-2 gap-2 mb-3">
@@ -51,12 +56,7 @@ const SchedulePageServer = async ({
                     <p className="text-sm">группа</p>
                     <p className="text-lg">{currentGroup}</p>
                 </div>
-                <div className="border rounded-lg p-2">
-                    <p className="text-sm">неделя</p>
-                    <p className="text-lg">
-                        {start} - {end}
-                    </p>
-                </div>
+                <WeekDrawer end={end} start={start} times={times} />
             </div>
             <ScheduleClient schedule={schedule} groupName={groupName} date={date} />
         </div>

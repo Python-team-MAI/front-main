@@ -8,14 +8,16 @@ interface ScheduleMenuProps {
     currentDate: moment.Moment
     locale: string
     group: string
-    setDate: React.Dispatch<React.SetStateAction<moment.Moment>>
+    setDate: (date: moment.Moment) => void
+    ref: React.RefObject<HTMLDivElement | null>
 }
 
-export const ScheduleMenu: FC<ScheduleMenuProps> = ({ time, currentDate, group, setDate }) => {
+export const ScheduleMenu: FC<ScheduleMenuProps> = ({ time, currentDate, group, setDate, ref }) => {
     const router = useRouter()
 
     return (
         <div
+            ref={ref}
             onClick={() => {
                 setDate(moment(time, 'DD.MM.YYYY'))
                 router.replace(`/schedule/?date=${time}&group=${group}`)

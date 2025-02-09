@@ -27,5 +27,18 @@
   "from": "From",
   "to": "To",
   "find path": "Find Path",
-  "map": "Map"
+  "map": "Map",
+  "0-month": "January",
+  "1-month": "February",
+  "2-month": "March",
+  "3-month": "April",
+  "4-month": "May",
+  "5-month": "June",
+  "6-month": "July",
+  "7-month": "August",
+  "8-month": "September",
+  "9-month": "October",
+  "10-month": "November",
+  "11-month": "December",
+  "weeks": "Weeks"
 }

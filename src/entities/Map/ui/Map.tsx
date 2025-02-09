@@ -1,10 +1,10 @@
 'use client'
 import { Canvas } from '@react-three/fiber'
 import React, { FC } from 'react'
-import { OfficeDrawer } from './drawers/OfficeDrawer'
 import { MapControls } from '@react-three/drei'
 import { INode, Office } from '../model/types/pathTypes'
 import { PathDrawer } from './drawers/PathDrawer'
+import { OfficeDrawer } from './drawers/OfficeDrawer'
 
 interface Props {
     mode: '2d' | '3d'

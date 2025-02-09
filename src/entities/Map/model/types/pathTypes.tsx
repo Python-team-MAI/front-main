@@ -5,6 +5,7 @@ export interface Office {
     coords: [number, number, number]
     color: string
     name: string
+    type?: NodeType
     desc: string
 }
 

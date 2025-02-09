@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import testMap1 from 'public/maps/test_map_1.json'
-import testMap2 from 'public/maps/test_map_2.json'
-import vertConnections from 'public/maps/all_vertical_connections.json'
+import testMap1 from '@/public/maps/test_map_1.json'
+import testMap2 from '@/public/maps/test_map_2.json'
+import vertConnections from '@/public/maps/all_vertical_connections.json'
 import { Button } from '@nextui-org/button'
 import { PathForm } from './PathForm'
 import { DynamicMap, IBuildingGraph, INode, IVerticalConnection, NavigationSystem, Office } from '../../../entities/Map'
@@ -18,7 +18,7 @@ export const UniversityMap = () => {
     const [instructions, setInstructions] = useState<string[]>()
     const [path, setPath] = useState<string[]>()
 
-    const findPath = async (fromId: string, toid: string) => {
+    const findPath = async (fromId: string, toId: string) => {
         const buildingGraph: IBuildingGraph = {
             floors: [
                 {
@@ -34,7 +34,7 @@ export const UniversityMap = () => {
         }
         try {
             const navSystem = new NavigationSystem(buildingGraph)
-            const path = await navSystem.findPath(fromId, toid)
+            const path = await navSystem.findPath(fromId, toId)
             setPath(path)
             console.log(path)
             const instructions = navSystem.generateInstructions(path)
