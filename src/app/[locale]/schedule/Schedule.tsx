@@ -24,6 +24,7 @@ export const ScheduleClient = ({
     const times = Object.keys(scheduleDays)
 
     useEffect(() => {
+        document.title = `Расписание на ${moment(currentDate, 'DD.MM.YYYY').format('DD.MM')}`
         if (canScroll) {
             setCurrentDate(moment(date, 'DD.MM.YYYY'))
             const elemWidth = scheduleElem.current?.getBoundingClientRect().width
