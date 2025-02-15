@@ -1,6 +1,6 @@
-import { getDayOfWeek } from '@/shared/lib/getDayOfWeek'
+import { getDayOfWeek } from '@/shared/lib/dates/getDayOfWeek'
 import { FC } from 'react'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/entities/i18n/routing'
 import moment from 'moment'
 
 interface ScheduleMenuProps {

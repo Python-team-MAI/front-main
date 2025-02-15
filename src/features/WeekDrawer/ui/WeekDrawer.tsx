@@ -1,10 +1,10 @@
 'use client'
 
-import { getWeekRange } from '@/shared/lib/getWeekRange'
+import { getWeekRange } from '@/shared/lib/dates/getWeekRange'
 import { Drawer, DrawerBody, DrawerContent, DrawerHeader } from '@nextui-org/drawer'
 import moment from 'moment'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/navigation'
+import { useRouter } from '@/entities/i18n/routing'
 import { FC, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 

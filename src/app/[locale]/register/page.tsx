@@ -1,4 +1,4 @@
-import { Link, Locale, redirect } from '@/navigation'
+import { Link, Locale, redirect } from '@/entities/i18n/routing'
 import { signIn, providerMap } from '@/auth'
 import { AuthError } from 'next-auth'
 import { Button } from '@nextui-org/button'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Schedule } from '@/entities/Schedule'
-import { getWeekRange } from '@/shared/lib/getWeekRange'
+import { getWeekRange } from '@/shared/lib/dates/getWeekRange'
 import * as crypto from 'crypto'
 import moment from 'moment'
 import { ScheduleClient } from './Schedule'

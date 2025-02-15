@@ -1,6 +1,6 @@
 import { Avatar } from '@nextui-org/react'
 import { Session } from 'next-auth'
-import { Link } from '@/navigation'
+import { Link } from '@/entities/i18n/routing'
 import React, { FC } from 'react'
 
 interface UserAvatarProps {

@@ -1,5 +1,5 @@
 'use client'
-import { Locale } from '@/shared/i18n/routing'
+import { Locale } from '@/entities/i18n/routing'
 import { NextUIProvider } from '@nextui-org/react'
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
