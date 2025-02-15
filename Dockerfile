@@ -1,11 +1,14 @@
-# Stage 1: Build application
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+RUN apk add --no-cache ca-certificates
+
 COPY package.json yarn.lock .npmrc* ./
 
-RUN yarn install --frozen-lockfile
+RUN --mount=type=cache,target=/usr/local/share/.cache/yarn/v6 \
+    yarn install --frozen-lockfile --network-timeout 1000000
 
 COPY . .
 
