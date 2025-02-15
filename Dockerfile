@@ -26,4 +26,4 @@ COPY --from=builder /app/next.config.ts ./
 
 ENV NODE_ENV production
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["yarn", "start", "-H", "0.0.0.0", "-p", "3000"]
