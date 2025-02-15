@@ -1,4 +1,3 @@
-import { auth } from '@/auth'
 import { Locale, redirect } from '@/entities/i18n/routing'
 import { Button } from '@nextui-org/button'
 import { Card, CardFooter, CardHeader } from '@nextui-org/card'
@@ -8,8 +7,6 @@ import Image from 'next/image'
 export default async function Home({ params }: { params: Promise<{ locale: Locale }> }) {
     const { locale } = await params
     const t = await getTranslations()
-    const session = await auth()
-    if (!session) return redirect({ locale, href: '/login' })
 
     return (
         <main className="p-2">

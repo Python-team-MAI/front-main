@@ -3,20 +3,14 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/navbar'
 import Image from 'next/image'
 import { Link, useRouter } from '@/navigation'
-import React, { FC } from 'react'
 import moment from 'moment'
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher'
 import { LanguageSwitcher } from '@/widgets/LanguageSwitcher'
-import { UserAvatar } from '@/widgets/UserAvatar'
-import { Button } from '@nextui-org/button'
+// import { UserAvatar } from '@/widgets/UserAvatar'
+// import { Button } from '@nextui-org/button'
 import { useTranslations } from 'next-intl'
-import { Session } from 'next-auth'
 
-interface LongHeaderProps {
-    session: Session | null
-}
-
-export const LongHeader: FC<LongHeaderProps> = ({ session }) => {
+export const LongHeader = ({}) => {
     const router = useRouter()
     const t = useTranslations()
 
@@ -46,7 +40,7 @@ export const LongHeader: FC<LongHeaderProps> = ({ session }) => {
                 <NavbarItem>
                     <LanguageSwitcher />
                 </NavbarItem>
-                <NavbarItem>
+                {/* <NavbarItem>
                     {session ? (
                         <UserAvatar session={session} />
                     ) : (
@@ -54,7 +48,7 @@ export const LongHeader: FC<LongHeaderProps> = ({ session }) => {
                             {t('sign in')}
                         </Button>
                     )}
-                </NavbarItem>
+                </NavbarItem> */}
             </NavbarContent>
         </Navbar>
     )

@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation'
 import { Locale, routing } from '@/entities/i18n/routing'
 import { Header } from '@/widgets/Header'
 import './globals.css'
-import { auth } from '@/auth'
 
 const roboto = Roboto({ subsets: ['cyrillic', 'latin'], weight: ['500', '700', '900'] })
 
@@ -28,13 +27,12 @@ export default async function RootLayout({
     }
 
     const messages = await getMessages()
-    const session = await auth()
 
     return (
         <html lang={locale} suppressHydrationWarning>
             <body className={`${roboto.className} antialiased`}>
                 <Providers locale={locale} messages={messages}>
-                    <Header session={session} />
+                    <Header />
                     <div className="px-40 max-sm:p-0">{children}</div>
                 </Providers>
             </body>
