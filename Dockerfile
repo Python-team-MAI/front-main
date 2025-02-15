@@ -18,11 +18,11 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install --production --frozen-lockfile
+RUN yarn install --production ы--frozen-lockfile
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.ts ./
 
 ENV NODE_ENV production
 EXPOSE 3000
