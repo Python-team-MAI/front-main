@@ -5,6 +5,7 @@ import * as crypto from 'crypto'
 import moment from 'moment'
 import { ScheduleClient } from './Schedule'
 import { WeekDrawer } from '@/features/WeekDrawer'
+import { GroupDrawer } from '@/features/GroupDrawer'
 
 async function fetchSchedule(groupName: string): Promise<Schedule> {
     const hash = crypto.createHash('md5').update(groupName).digest('hex')
@@ -22,6 +23,8 @@ const SchedulePageServer = async ({
     const { date, group: groupName } = await searchParams
     let currentDate: moment.Moment
     let currentGroup: string
+    // Кэш на 12 недель = 7 257 600 секунд
+    const groups = await fetch('https://public.mai.ru/schedule/data/groups.json', { next: { revalidate: 7257600 } })
 
     if (date) {
         currentDate = moment(date, 'DD.MM.YYYY')
@@ -52,10 +55,7 @@ const SchedulePageServer = async ({
     return (
         <div className="p-3">
             <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="border rounded-lg p-2">
-                    <p className="text-sm">группа</p>
-                    <p className="text-lg">{currentGroup}</p>
-                </div>
+                <GroupDrawer currentGroup={currentGroup} groups={await groups.json()} />
                 <WeekDrawer end={end} start={start} times={times} />
             </div>
             <ScheduleClient schedule={schedule} groupName={groupName} date={date} />

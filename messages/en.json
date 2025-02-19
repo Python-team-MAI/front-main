@@ -44,5 +44,13 @@
   "schedule on": "Schedule of",
   "sign up": "Register",
   "there is account": "Is there an account? ",
-  "info page": "Extra info"
+  "info page": "Extra info",
+  "first_name": "Name",
+  "last_name": "Last Name",
+  "bio": "Bio ",
+  "course": "Course",
+  "institute": "Institute",
+  "level": "Education level",
+  "group": "group",
+  "groups": "Groups"
 }

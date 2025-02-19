@@ -8,7 +8,7 @@ import { LongHeader } from './components/LongHeader'
 export const Header = ({}) => {
     const pathname = usePathname()
 
-    if (pathname === '/login' || pathname === '/register') {
+    if (pathname === '/login' || pathname === '/register' || pathname === '/register/info') {
         return <ShortHeader />
     }
 
