@@ -29,11 +29,11 @@ export default async function RootLayout({
     const messages = await getMessages()
 
     return (
-        <html lang={locale} suppressHydrationWarning>
-            <body className={`${roboto.className} antialiased`}>
+        <html lang={locale}>
+            <body className={`${roboto.className} antialiased dark`}>
                 <Providers locale={locale} messages={messages}>
                     <Header />
-                    <div className="px-40 max-sm:p-0">{children}</div>
+                    <div className="px-[10vw] max-md:px-2">{children}</div>
                 </Providers>
             </body>
         </html>

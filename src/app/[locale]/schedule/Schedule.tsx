@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import { Schedule, ScheduleDayCard, ScheduleMenu } from '@/entities/Schedule'
+import { Schedule, ScheduleDayCard, ScheduleMenu } from '@/entities/schedule'
 import moment from 'moment'
 import { useTranslations } from 'next-intl'
 
@@ -28,10 +28,37 @@ export const ScheduleClient = ({
         if (canScroll) {
             setCurrentDate(moment(date, 'DD.MM.YYYY'))
             const elemWidth = scheduleElem.current?.getBoundingClientRect().width
-            const firstDay = moment(times[0], 'DD.MM.YYYY')
-            const differenceDays = Math.abs(moment(date, 'DD.MM.YYYY').diff(firstDay, 'day'))
-            scrollDateDiv.current?.scroll({ left: 0, behavior: 'instant' })
-            scrollDateDiv.current?.scroll({ left: (elemWidth || 0 + 13) * differenceDays, behavior: 'smooth' })
+            let distanceIndexes = 0
+            let monthIndexes = 0
+            const dateElementIndex = times.findIndex((time) => time === date)
+            if (dateElementIndex !== -1) {
+                distanceIndexes = dateElementIndex + 1
+                monthIndexes = moment(times[distanceIndexes], 'DD.MM.YYYY').diff(moment(times[0], 'DD.MM.YYYY'), 'M')
+            } else {
+                let lastDiff = -Infinity
+                for (let i = 0; i < times.length; i++) {
+                    const time = moment(times[i], 'DD.MM.YYYY')
+                    const dateMoment = moment(date, 'DD.MM.YYYY')
+                    const difference = time.diff(dateMoment, 'd')
+                    if (lastDiff < 0 && difference >= 0) {
+                        console.log(time)
+                        distanceIndexes = i + 1
+                        monthIndexes = moment(times[distanceIndexes], 'DD.MM.YYYY').diff(
+                            moment(times[0], 'DD.MM.YYYY'),
+                            'M'
+                        )
+
+                        break
+                    } else {
+                        lastDiff = difference
+                    }
+                }
+            }
+            console.log(distanceIndexes, monthIndexes)
+            scrollDateDiv.current?.scroll({
+                left: (elemWidth || 0) * (distanceIndexes + monthIndexes) * 1.16,
+                behavior: 'smooth',
+            })
         } else {
             setCanScroll(true)
         }

@@ -1,6 +1,6 @@
 'use client'
 import { Group, GroupSelector } from '@/entities/group'
-import { Drawer, DrawerContent } from '@nextui-org/drawer'
+import { Drawer, DrawerContent, DrawerHeader } from '@nextui-org/drawer'
 import { useTranslations } from 'next-intl'
 import { useRouter } from '@/navigation'
 import React, { FC, ReactNode, useEffect, useState } from 'react'
@@ -14,9 +14,16 @@ interface GroupDrawerProps {
 export const GroupsWrapper: FC<{ children: ReactNode }> = ({ children }) => (
     <div className="grid grid-cols-3 gap-2">{children}</div>
 )
-export const Wrapper: FC<{ children: ReactNode }> = ({ children }) => (
-    <DrawerContent className="p-2 flex flex-col gap-2">{children}</DrawerContent>
-)
+export const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
+    const t = useTranslations()
+
+    return (
+        <DrawerContent className="p-2 flex flex-col gap-2">
+            <DrawerHeader>{t('groups')}</DrawerHeader>
+            {children}
+        </DrawerContent>
+    )
+}
 
 export const GroupDrawer: FC<GroupDrawerProps> = ({ currentGroup: initialGroup, groups }) => {
     const [currentGroup, setCurrentGroup] = useState('')
@@ -31,8 +38,7 @@ export const GroupDrawer: FC<GroupDrawerProps> = ({ currentGroup: initialGroup, 
 
     const onGroupChange = (key: string, value: string) => {
         if (key === 'group_name') {
-            // setCurrentGroup(value)
-            router.push(`/schedule?group=${value}&date=${searchParams.get('date')}`)
+            router.replace(`/schedule?group=${value}&date=${searchParams.get('date')}`)
             setIsOpen(false)
         }
     }

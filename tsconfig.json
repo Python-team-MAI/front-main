@@ -23,7 +23,8 @@
         "paths": {
             "@/*": ["./src/*"],
             "@/navigation": ["./src/entities/i18n/routing.ts"],
-            "@/public/*": ["./public/*"]
+            "@/public/*": ["./public/*"],
+            "@/fetch": ["./src/shared/lib/api/fetch.ts"]
         }
     },
     "include": [

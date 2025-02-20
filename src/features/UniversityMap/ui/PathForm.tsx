@@ -3,7 +3,7 @@ import { FC, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Select, SelectItem } from '@nextui-org/select'
 import { Button } from '@nextui-org/button'
-import { INode } from '@/entities/Map'
+import { INode } from '@/entities/map'
 
 interface Props {
     nodeMapper: Record<1 | 2, INode[]>

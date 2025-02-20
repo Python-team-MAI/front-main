@@ -1,5 +1,5 @@
 import React from 'react'
-import { Schedule } from '@/entities/Schedule'
+import { Schedule } from '@/entities/schedule'
 import { getWeekRange } from '@/shared/lib/dates/getWeekRange'
 import * as crypto from 'crypto'
 import moment from 'moment'

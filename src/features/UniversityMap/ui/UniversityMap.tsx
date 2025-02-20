@@ -5,7 +5,7 @@ import testMap2 from '@/public/maps/test_map_2.json'
 import vertConnections from '@/public/maps/all_vertical_connections.json'
 import { Button } from '@nextui-org/button'
 import { PathForm } from './PathForm'
-import { DynamicMap, IBuildingGraph, INode, IVerticalConnection, NavigationSystem, Office } from '../../../entities/Map'
+import { DynamicMap, IBuildingGraph, INode, IVerticalConnection, NavigationSystem, Office } from '../../../entities/map'
 
 export const UniversityMap = () => {
     const [floor, setFloor] = useState<number>(1)

@@ -38,7 +38,7 @@ export const WeekDrawer: FC<WeekDrawer> = ({ end, start, times }) => {
     return (
         <>
             <div className="border rounded-lg p-2" onClick={() => setIsOpen(true)}>
-                <p className="text-sm">неделя</p>
+                <p className="text-sm">{t('week')}</p>
                 <p className="text-lg">
                     {moment(start, 'DD.MM.YYYY').format('DD.MM')} - {moment(end, 'DD.MM.YYYY').format('DD.MM')}
                 </p>

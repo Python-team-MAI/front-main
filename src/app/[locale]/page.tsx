@@ -58,7 +58,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
             </section>
             <section className="flex justify-center gap-2 m-4">
                 <div className="cursor-pointer">
-                    <Card className="flex flex-col items-center p-1 cursor-pointer">
+                    <Card className="flex flex-col items-center cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -71,7 +71,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     <p className="text-center m-1 text-sm">{t('teachers')}</p>
                 </div>
                 <div className="cursor-pointer">
-                    <Card className="flex flex-col items-center p-1 cursor-pointer">
+                    <Card className="flex flex-col items-center cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -84,7 +84,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     <p className="text-center m-1 text-sm">{t('food')}</p>
                 </div>
                 <div className="cursor-pointer">
-                    <Card className="flex flex-col items-center p-1 cursor-pointer">
+                    <Card className="flex flex-col items-center cursor-pointer">
                         <Image
                             className="max-md:w-16"
                             unoptimized
@@ -97,7 +97,7 @@ export default async function Home({ params }: { params: Promise<{ locale: Local
                     <p className="text-center m-1 text-sm">{t('sport')}</p>
                 </div>
                 <div className="cursor-pointer">
-                    <Card className="flex flex-col items-center p-1">
+                    <Card className="flex flex-col items-center">
                         <Image
                             className="max-md:w-16"
                             unoptimized
