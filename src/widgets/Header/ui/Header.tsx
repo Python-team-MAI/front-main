@@ -5,6 +5,7 @@ import { ShortHeader } from './components/ShortHeader'
 import { TabBar } from './components/TabBar'
 import { LongHeader } from './components/LongHeader'
 import { FC } from 'react'
+import { ShortestHeader } from './components/ShortestHeader'
 
 interface HeaderProps {
     isShort?: boolean
@@ -13,7 +14,11 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ isShort }) => {
     const pathname = usePathname()
 
-    if (pathname === '/login' || pathname === '/register' || pathname === '/register/info' || isShort) {
+    if (isShort) {
+        return <ShortestHeader />
+    }
+
+    if (pathname === '/login' || pathname === '/register' || pathname === '/register/info') {
         return <ShortHeader />
     }
 

@@ -1,18 +1,34 @@
-import { Header } from '@/widgets/Header'
-import { getMessages } from 'next-intl/server'
-import { Locale, routing } from '@/entities/i18n/routing'
+import { routing } from '@/navigation'
 import { Providers } from './[locale]/providers'
+import './[locale]/globals.css'
+// import { NotFoundPage } from '@/widgets/NotFoundPage'
+import { Navbar, NavbarBrand, NavbarContent } from '@nextui-org/navbar'
+import Image from 'next/image'
 import { Button } from '@nextui-org/button'
 import { redirect } from 'next/navigation'
 
-const NotFound = async () => {
-    const messages = await getMessages({ locale: routing.defaultLocale })
+const messages = {
+    'logo title': 'МАИ (Студенты)',
+}
 
+const NotFound = () => {
     return (
         <html lang={routing.defaultLocale}>
-            <body className={`antialiased `}>
-                <Providers locale={routing.defaultLocale as Locale} messages={messages}>
-                    <Header isShort />
+            <body className={`antialiased dark`}>
+                <Providers locale={routing.defaultLocale} messages={messages}>
+                    <Navbar shouldHideOnScroll>
+                        <NavbarBrand className="cursor-pointer">
+                            <Image
+                                width={70}
+                                height={70}
+                                className="max-md:hidden"
+                                src={'/logo/light_logo.png'}
+                                alt="logo"
+                            />
+                            <p className="font-bold text-inherit">МАИ (Студенты)</p>
+                        </NavbarBrand>
+                        <NavbarContent justify="end"></NavbarContent>
+                    </Navbar>
                     <div className="px-[10vw] max-md:px-2">
                         <div className="flex flex-col gap-3 justify-center items-center my-44 p-5 border rounded-lg">
                             <p className="text-2xl text-center font-bold">404: Страница не найдена</p>
@@ -37,11 +53,12 @@ const NotFound = async () => {
                                         redirect('/ru/support')
                                     }}
                                 >
-                                    На страницу техподдержки
+                                    Техподдержка
                                 </Button>
                             </div>
                         </div>
                     </div>
+                    {/* <NotFoundPage /> */}
                 </Providers>
             </body>
         </html>

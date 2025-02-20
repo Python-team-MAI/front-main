@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
-import { Providers } from './providers'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Locale, routing } from '@/entities/i18n/routing'
 import { Header } from '@/widgets/Header'
 import './globals.css'
+import { Providers } from './providers'
 
 const roboto = Roboto({ subsets: ['cyrillic', 'latin'], weight: ['500', '700', '900'] })
 
@@ -22,6 +22,7 @@ export default async function RootLayout({
     params: Promise<{ locale: Locale }>
 }>) {
     const { locale } = await params
+
     if (!routing.locales.includes(locale)) {
         notFound()
     }

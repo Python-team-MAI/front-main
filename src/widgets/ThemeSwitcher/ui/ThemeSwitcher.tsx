@@ -5,9 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 export function ThemeSwitcher() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const theme = document ? document.getElementsByTagName('html')[0].className : ''
+    const theme = 'dark'
     const { resolvedTheme, setTheme } = useTheme()
     const [currentTheme, setCurrentTheme] = useState(theme || resolvedTheme)
 
